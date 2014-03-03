@@ -1,0 +1,6 @@
+#!/bin/bash
+
+xbian-config services insert bluetooth-pairing
+xbian-config services insert bluetooth
+
+    

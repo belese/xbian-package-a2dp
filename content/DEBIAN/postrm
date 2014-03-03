@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xbian-config services delete bluetooth-pairing
+xbian-config services delete bluetooth

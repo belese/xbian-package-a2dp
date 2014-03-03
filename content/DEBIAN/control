@@ -1,0 +1,9 @@
+Origin: XBian
+Package: xbian-package-a2dp
+Version: 1.0
+Section: net
+Priority: optional
+Architecture: armhf
+Depends: bluez,alsa-base,alsa-utils,pulseaudio,pulseaudio-module-bluetooth,pulseaudio-utils,python-gobject,python-gobject-2,bluez-tools
+Maintainer: <development@xbian.org>
+Description: a2dp pulse audio sink
