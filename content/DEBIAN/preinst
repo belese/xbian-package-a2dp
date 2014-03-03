@@ -15,7 +15,7 @@ grep -q 'snd_bcm2835' /etc/modules || echo 'snd_bcm2835' >> /etc/modules
 sed -i 's/^resample-method /; resample-method /' /etc/pulse/daemon.conf
 echo 'resample-method = trivial' >> /etc/pulse/daemon.conf
 
-sed -i --follow-symlinks 's/Enable=[^ ]*/Enable=Source,Sink,Media,Socket/g' /etc/bluetooth/audio.conf.test
+sed -i --follow-symlinks 's/Enable=[^ ]*/Enable=Source,Sink,Media,Socket/g' /etc/bluetooth/audio.conf
 sed -i --follow-symlinks 's/Name = [^ ]*/Name = %h/g' /etc/bluetooth/main.conf
 sed -i --follow-symlinks 's/Class = [^ ]*/Class = 0x20041C/g' /etc/bluetooth/main.conf
  
