@@ -12,8 +12,9 @@ sed -i --follow-symlinks 's/Enable=[^ ]*/Enable=Source,Sink,Media,Socket/g' /etc
 if [ $(grep "Enable=Source,Sink,Media,Socket" /etc/bluetooth/audio.conf | wc -l) -eq 1 ];	then
 	echo "Success: replaced bluetooth enable"
 else
-	sudo sed -i --follow-symlinks 's/^\[General\]/\[General\]\nEnable=Source,Sink,Media,Socket/g' /etc/bluetooth/main.conf
+	sed -i --follow-symlinks 's/^\[General\]/\[General\]\nEnable=Source,Sink,Media,Socket/g' /etc/bluetooth/main.conf
 	echo "Success: insert bluetooth enable"
+fi
 sed -i --follow-symlinks 's/Name = [^ ]*/Name = %h/g' /etc/bluetooth/main.conf
 sed -i --follow-symlinks 's/Class = [^ ]*/Class = 0x20041C/g' /etc/bluetooth/main.conf
 
@@ -21,5 +22,3 @@ xbian-config services insert bluetooth-pairing
 xbian-config services insert bluetooth
 
 chmod 664 /etc/xbian-a2dp.conf
-
-    
