@@ -3,4 +3,6 @@
 xbian-config services insert bluetooth-pairing
 xbian-config services insert bluetooth
 
+chmod 664 /etc/xbian-a2dp.conf
+
     
