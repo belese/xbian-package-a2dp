@@ -2,17 +2,13 @@
 
 #backup default or existant configuration
 [ -e /etc/bluetooth/audio.conf.xbian ] || cp /etc/bluetooth/audio.conf /etc/bluetooth/audio.conf.xbian
-[ -e /etc/pulse/daemon.conf.xbian ] || cp /etc/pulse/daemon.conf /etc/pulse/daemon.conf.xbian
 [ -e /etc/bluetooth/main.conf.xbian ] || cp /etc/bluetooth/main.conf /etc/bluetooth/main.conf.xbian
 
-sed -i 's/^resample-method /; resample-method /' /etc/pulse/daemon.conf
-echo 'resample-method = trivial' >> /etc/pulse/daemon.conf
-
-sed -i --follow-symlinks 's/Enable=[^ ]*/Enable=Source,Sink,Media,Socket/g' /etc/bluetooth/audio.conf
-if [ $(grep "Enable=Source,Sink,Media,Socket" /etc/bluetooth/audio.conf | wc -l) -eq 1 ];	then
+sed -i --follow-symlinks 's/Enable=[^ ]*/Enable=Source,Sink,Media/g' /etc/bluetooth/audio.conf
+if [ $(grep "Enable=Source,Sink,Media" /etc/bluetooth/audio.conf | wc -l) -eq 1 ];	then
 	echo "Success: replaced bluetooth enable"
 else
-	sed -i --follow-symlinks 's/^\[General\]/\[General\]\nEnable=Source,Sink,Media,Socket/g' /etc/bluetooth/audio.conf
+	sed -i --follow-symlinks 's/^\[General\]/\[General\]\nEnable=Source,Sink,Media/g' /etc/bluetooth/audio.conf
 	echo "Success: insert bluetooth enable"
 fi
 sed -i --follow-symlinks 's/Name = [^ ]*/Name = %h/g' /etc/bluetooth/main.conf
